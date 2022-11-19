@@ -1,0 +1,41 @@
+create database BankingHW;
+
+create table bank_table (
+    bankId varchar primary key not null unique ,
+    bankBranchCode varchar,
+    bankGrade varchar,
+    bankTell varchar,
+    bankAddress text
+);
+
+create table account_table (
+    accountId serial primary key ,
+    accountNo varchar,
+    accountType varchar,
+    bank varchar, CONSTRAINT fk_bank FOREIGN KEY (bank) REFERENCES bank_table(bankId),
+    balance Bigint
+);
+
+
+create table customer_table (
+customerId serial primary key ,
+name varchar,
+ nationalId varchar,
+ cellPhone varchar,
+ address text,
+ userName varchar,
+ password varchar,
+ account int unique,
+DebitCard int unique
+);
+
+create table debitCard_table (
+
+    debitCardId serial primary key ,
+    debitCardNo varchar,
+    expDate BIGINT,
+ CVV2 int[4],
+ password int[6],
+ status boolean
+
+)
